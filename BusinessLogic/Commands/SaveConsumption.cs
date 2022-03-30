@@ -3,6 +3,7 @@ using Data;
 using Data.Entities;
 using Presentation;
 using Presentation.View;
+using System;
 
 namespace BusinessLogic.Commands
 {
@@ -13,8 +14,17 @@ namespace BusinessLogic.Commands
             InputData data = new SaveConsumptionView().RequestData();
             Consumption entity = new Consumption();
             entity.MemberID = int.Parse(data.fields["CodigoSocio"]);
-            entity.Value = int.Parse(data.fields["Consumo"]);
-            new ConsumptionRepository().Save(entity);
+            int value =entity.Value = int.Parse(data.fields["Consumo"]);
+            if(validateConsumption(value)){
+                new ConsumptionRepository().Save(entity);
+            }
+            else{
+                Console.WriteLine("No puede ingresar valores negativos.");
+            }
+        }
+
+        private bool validateConsumption(int value){
+            return value>0;
         }
     }
 }
