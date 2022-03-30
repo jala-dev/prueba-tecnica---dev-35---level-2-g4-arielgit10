@@ -1,6 +1,7 @@
 ﻿using Data.DB;
 using Data.Entities;
 using System.Collections.Generic;
+using System;
 
 namespace Data
 {
@@ -24,5 +25,18 @@ namespace Data
 
             return result;
         }
+
+
+        public static void SetConsumptionByMember(int entity,Payment payEntity)
+        {
+            foreach(Consumption item in LocalMemoryDB.ConsumptionsContext)
+            {
+                if(item.MemberID == entity)
+                {
+                    item.Paid=true;
+                }
+            }
+        }
+
     }
 }
