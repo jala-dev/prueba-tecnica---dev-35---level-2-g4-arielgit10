@@ -15,8 +15,13 @@ namespace BusinessLogic.Commands
             entity.ID = int.Parse(data.fields["CodigoSocio"]);
 
             Member member = new MemberRepository().GetMember(entity.ID);
+            if(member == null){
+                throw new CodigoNoHallado();
+            }
+            else{
+                view.ShowResult(member.FirstName + " " + member.SecondName);
+            }
             
-            view.ShowResult(member.FirstName + " " + member.SecondName);
         }
     }
 }

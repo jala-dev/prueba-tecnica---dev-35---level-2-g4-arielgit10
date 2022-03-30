@@ -41,7 +41,12 @@ namespace BusinessLogic
                     commands[option-1].Execute();
                     break;
                 case 3:
-                    new MemberInfoRequest().Execute();
+                    try{
+                        new MemberInfoRequest().Execute();    
+                    }
+                    catch(CodigoNoHallado co){
+                        co.printMessage();
+                    }
                     break;
                 case 4:
                     new SaveUser().Execute();
