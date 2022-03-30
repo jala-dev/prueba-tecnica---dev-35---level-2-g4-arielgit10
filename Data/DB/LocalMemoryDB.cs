@@ -9,5 +9,6 @@ namespace Data.DB
     {
         public static List<Consumption> ConsumptionsContext = new List<Consumption>();
         public static List<Member> MembersContext = new List<Member>();
+
     }
 }
