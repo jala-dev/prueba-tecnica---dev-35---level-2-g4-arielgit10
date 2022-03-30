@@ -16,15 +16,19 @@ namespace BusinessLogic.Commands
             InputData data = view.RequestData();
             Member entity = new Member();
             entity.ID = int.Parse(data.fields["CodigoSocio"]);
+          //  entity.FirstName= data.fields["CodigoSocio"]);
             
             List<Consumption> memberConsumptions = new ConsumptionRepository().GetConsumptionByMember(entity);
+
+            Member memberName = new MemberRepository().GetMember(entity.ID);
+
 
             double total = this.CalculateTotalReceivable(memberConsumptions);
             int value = this.CalculateValueReceivable(memberConsumptions);
 
 
             //view.ShowResult(total);  
-            view.ShowResult(entity.ID,total,value);          
+            view.ShowResult(entity.ID,memberName.FirstName,total,value);          
         }
 
         private double CalculateTotalReceivable(List<Consumption> memberConsumptions)

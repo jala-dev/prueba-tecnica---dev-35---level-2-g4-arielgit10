@@ -18,12 +18,13 @@ namespace Presentation.View
             Console.WriteLine("======================================");
             Console.WriteLine("1. Ingrese el codigo del socio: ");
             input.fields.Add("CodigoSocio", Console.ReadLine());
+          //  input.fields.Add("NombreSocio", Console.ReadLine());
             return input;
         }
 
-        public void ShowResult(int id, double total,int value)
+        public void ShowResult(int id, string name,double total,int value)
         {            
-            Console.WriteLine("R. El consumo del socio {0} es de {1} cubos. La deuda actual es de {2} Bs.",id,value,total);
+            Console.WriteLine("R. El consumo del socio {0}, correspondiente a {1}, es de {2} cubos. La deuda actual es de {3} Bs.",id,name,value,total);
             Console.WriteLine("======================================");
         }
     }
